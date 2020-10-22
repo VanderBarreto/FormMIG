@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>
+        {% block title %}
+        {{ page_title|default:"Sua revista no MIGUILIN" }}
+        {% endblock title %}
+     </title>
+     <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+   </head>
+   <body>
+     <div id="wrapper">
+     <header id="header">
+       <div id="logo"><img src="{% static 'logomiguilim.png' %}" alt="" /></div>
+     </header>
+     
+    
+     <section id="main">
+       {% block content %}
+       <p>.</p>
+       {% endblock content %}
+     </section>
+     <footer id="footer">
+       <script type="text/JavaScript">
+       document.write(new Date().getFullYear());
+       </script> Miguilim
+     </footer>
+     </div>
+   </body>
+ </html>

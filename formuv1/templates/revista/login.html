@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}REVISTA{% endblock title %}
+{% block content %}
+{% load static %} 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+ 
+ <h1> {{ mensagem }} </h1>
+ 
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Acesse sua Revista :</h1>
+<form method="post" action="">
+          {% csrf_token %}
+          {# A more "HTML" way of creating the login form#}
+          <label for="username">Username:</label>
+          <input type="text" name="e-mail" placeholder="Username">
+          <p>
+          <label for="password">Password:</label>
+          <input type="password" name="senha" placeholder="Password">
+          <p>
+          <label for="username">ISSN:</label>
+          <input type="text" name="revista" placeholder="1234-5678">
+          <p>
+<input type="submit" name="" value="Acessar">
+
+</form>
+</div>
+  </div>
+{% endblock %}
