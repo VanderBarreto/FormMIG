@@ -26,7 +26,7 @@ class Dados:
         
         if str(id_revista) != "":
         
-            end_dspace = "http://192.168.10.21:8080"
+            end_dspace = "http://172.25.0.73:8080"
             ComandoURL = "curl -s -H 'accept: application/xml' "+end_dspace+str(id_revista)+"/metadata"
             print(ComandoURL)
             retorno = os.popen(ComandoURL).read()

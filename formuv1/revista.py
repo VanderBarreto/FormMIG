@@ -64,7 +64,7 @@ class Revistas:
             print('[{"key":"dc.contributor.editor","value":"'+str(request.POST.get('dccontributoreditor'))+'","language":"pt_BR"}]')
             
             token = g_token
-            end_dspace_metadata = "http://192.168.10.21:8080"+g_link+"/metadata"
+            end_dspace_metadata = "http://172.25.0.73:8080"+g_link+"/metadata"
             
             #metadata = '[{"key":"dc.description.abstract","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title","value":"'+str(request.POST.get('dctitle'))+'","language":null},{"key":"dc.title.abbreviated","value":"'+str(request.POST.get('dctitleabbreviated'))+'","language":null},{"key":"dc.title.proper","value":"'+str(request.POST.get('dctitleproper'))+'","language":"pt_BR"}]'
             
@@ -75,7 +75,7 @@ class Revistas:
             print(metadata)
             ComandoURL = 'curl --cookie "JSESSIONID='+token+'" -H "accept: application/json" -H "Content-Type: application/json" -X PUT '+end_dspace_metadata+" -d '"+metadata+"'"
             print(ComandoURL)
-            os.system(ComandoURL)
+            #os.system(ComandoURL)
             
             metadata=""
             toke=""
@@ -121,8 +121,8 @@ class Login:
         
         if request.method == 'POST':
             
-            self.user_global= request.POST.get('username')
-            self.senha_global= request.POST.get('password')
+            self.user_global= request.POST.get('email')
+            self.senha_global= request.POST.get('senha')
             self.revista_global= request.POST.get('revista')
             
             

@@ -34,9 +34,10 @@ class Logar():
         self.__senha= senha
         
         info_login = '"email='+str(email)+'&password='+str(senha)+'"'
-        end_dspace = 'http://192.168.10.21:8080'
+        end_dspace = 'http://172.25.0.73:8080'
         nome_cookie = "./cookies/"+str(email)+".txt"
         comandoLogin =  "curl -X POST -d "+info_login+" "+end_dspace+"/rest/login -c "+nome_cookie
+        print(comandoLogin)
         retorno = os.popen(comandoLogin).read()
         
         print("\n\n"+str(retorno[56:60]))
@@ -65,8 +66,9 @@ class Logar():
         #issn="1678-6408"
         data_issn='{"key":"dc.identifier.issn","value":"'+issn+'","language":"pt_BR"}'
         
+        ComandoISSN = 'curl -H "Accept: application/xml" -H "Content-Type: application/json" -d '+"'"+data_issn+"'"+' -X POST "http://172.25.0.73:8080/rest/items/find-by-metadata-field"'
         
-        retorno = os.popen('curl -H "Accept: application/xml" -H "Content-Type: application/json" -d '+"'"+data_issn+"'"+' -X POST "http://192.168.10.21:8080/rest/items/find-by-metadata-field"').read()
+        retorno = os.popen(ComandoISSN).read()
         
         root = etree.fromstring(retorno)
         
