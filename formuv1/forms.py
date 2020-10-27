@@ -77,11 +77,22 @@ class ContactForm(forms.Form):
     dcpublisherlegalnature = forms.ChoiceField(choices=op_dcpublisherlegalnature, label='Natureza jurídica da instituição editora',initial = dados_iniciais.retorno('dc.publisher.legalnature'))
     dccontributoreditor = forms.CharField(max_length=100, label='Editor responsável',initial = dados_iniciais.retorno('dc.contributor.editor'))
     dcidentifiereditor = forms.CharField(max_length=100, label='Identificador do editor responsável',initial = dados_iniciais.retorno('dc.identifier.editor'))
-    dcidentifieremail = forms.EmailField(max_length=100, label='E-mail da revista',initial = dados_iniciais.retorno('dc.identifier.email')) 
+    dcidentifieremail = forms.EmailField(max_length=100, label='E-mail',initial = dados_iniciais.retorno('dc.identifier.email')) 
     dcdescriptioncep = forms.CharField(max_length=100, label='Código Postal (CEP)',initial = dados_iniciais.retorno('dc.description.cep'))
     op_dcdescriptionstate = [("", ""),("Acre (AC)","Acre (AC)"),\
                              ("Alagoas (AL)","Alagoas (AL)"),\
-                             ("Amapá (AP)","Amapá (AP)")]
+                             ("Amapá (AP)","Amapá (AP)"),\
+                             ("Amazonas (AM)","Amazonas (AM)"),\
+                             ("Bahia (BA)","Bahia (BA)"),\
+                             ("Ceará (CE)","Ceará (CE)"),\
+                             ("Distrito Federal (DF)","Distrito Federal (DF)"),\
+                             ("Espírito Santo (ES)","Espírito Santo (ES)"),\
+                             ("Goiás (GO)","Goiás (GO)"),\
+                             ("Maranhão (MA)","Maranhão (MA)"),\
+                             ("Mato Grosso (MT)","Mato Grosso (MT)"),\
+                             ("Mato Grosso do Sul (MS)","Mato Grosso do Sul (MS)"),\
+                             ("Minas Gerais (MG)","Minas Gerais (MG)"),\
+                             ()]
     dcdescriptionstate = forms.ChoiceField(choices=op_dcdescriptionstate, label='Estado (UF)', initial = dados_iniciais.retorno('dc.description.state'))
     dcdescriptioncity = forms.CharField(max_length=100, label='Cidade', initial = dados_iniciais.retorno('dc.description.city'))
     dcdescriptionneighborhood = forms.CharField(max_length=100, label='Bairro', initial = dados_iniciais.retorno('dc.description.neighborhood'))
@@ -155,12 +166,12 @@ class ContactForm(forms.Form):
                          ("Acesso híbrido","Acesso híbrido")]
     dcrightsaccess = forms.ChoiceField(choices=op_dcrightsaccess, label='Tipo de acesso',initial = dados_iniciais.retorno('dc.rights.access'))
     dcrightsembargedtime = forms.CharField(max_length=100, label='Período de embargo',initial = dados_iniciais.retorno('dc.rights.embargedtime'))
-    op_dcrightscreativecommons = [("", ""),("Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais, desde que seja atribuído o crédito ao autor da obra original (CC BY)","Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais, desde que seja atribuído o crédito ao autor da obra original (CC BY)"),\
-                                  ("Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-SA)","Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-SA)"),\
-                                  ("Permite redistribuição, comercial ou não comercial, desde que a obra não seja modificada e que seja atribuído o crédito ao autor (CC BY-ND)","Permite redistribuição, comercial ou não comercial, desde que a obra não seja modificada e que seja atribuído o crédito ao autor (CC BY-ND)"),\
-                                  ("Permite remixagem, adaptação e criação a partir da obra, desde que seja atribuído o crédito ao autor e que a nova criação não seja usada para fins comerciais (CC BY-NC)","Permite remixagem, adaptação e criação a partir da obra, desde que seja atribuído o crédito ao autor e que a nova criação não seja usada para fins comerciais (CC BY-NC)"),\
-                                  ("Permite remixagem, adaptação e criação a partir da obra, para fins não comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-NC-SA)","Permite remixagem, adaptação e criação a partir da obra, para fins não comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-NC-SA)"),\
-                                  ("Permite redistribuição não comercial, desde que seja atribuído o crédito ao autor e que a obra não seja alterada de nenhuma forma (CC BY-NC-ND)","Permite redistribuição não comercial, desde que seja atribuído o crédito ao autor e que a obra não seja alterada de nenhuma forma (CC BY-NC-ND)")]
+    op_dcrightscreativecommons = [("", ""),("Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais, desde que seja atribuído o crédito ao autor da obra original (CC BY)","Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais,\n desde que seja atribuído o crédito ao autor da obra original (CC BY)"),\
+                                  ("Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-SA)","Permite distribuição, remixagem, adaptação e criação a partir da obra, mesmo para fins comerciais,\n desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-SA)"),\
+                                  ("Permite redistribuição, comercial ou não comercial, desde que a obra não seja modificada e que seja atribuído o crédito ao autor (CC BY-ND)","Permite redistribuição, comercial ou não comercial,\n desde que a obra não seja modificada e que seja atribuído o crédito ao autor (CC BY-ND)"),\
+                                  ("Permite remixagem, adaptação e criação a partir da obra, desde que seja atribuído o crédito ao autor e que a nova criação não seja usada para fins comerciais (CC BY-NC)","Permite remixagem, adaptação e criação a partir da obra, desde que seja atribuído\n o crédito ao autor e que a nova criação não seja usada para fins comerciais (CC BY-NC)"),\
+                                  ("Permite remixagem, adaptação e criação a partir da obra, para fins não comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-NC-SA)","Permite remixagem, adaptação e criação a partir da obra\n, para fins não comerciais, desde que seja atribuído o crédito ao autor da obra original e que as novas criações utilizem a mesma licença da obra original (CC BY-NC-SA)"),\
+                                  ("Permite redistribuição não comercial, desde que seja atribuído o crédito ao autor e que a obra não seja alterada de nenhuma forma (CC BY-NC-ND)","Permite redistribuição não comercial, desde que seja atribuído o crédito ao autor\n e que a obra não seja alterada de nenhuma forma (CC BY-NC-ND)")]
     dcrightscreativecommons = forms.ChoiceField(choices=op_dcrightscreativecommons, label='Licença Creative Commons',initial = dados_iniciais.retorno('dc.rights.creativecommons'))
     op_dcdescriptionpublicationfees = [("", ""),("A revista cobra taxa de submissão de artigos","A revista cobra taxa de submissão de artigos"),\
                                        ("A revista cobra taxa de processamento de artigos (APC)","A revista cobra taxa de processamento de artigos (APC)"),\
