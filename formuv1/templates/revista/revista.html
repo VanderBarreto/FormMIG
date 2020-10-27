@@ -1,7 +1,11 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}REVISTA{% endblock title %}
 {% block content %}
 {% load static %} 
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
  
@@ -17,7 +21,7 @@
              
             <form action="" method="post" novalidate enctype="multipart/form-data">
             <table>
-            {{ form.as_table }}
+            {{ form|crispy }}
             <tr>
             <td>&nbsp;</td>
             <td><input type="submit" value="Atualizar"></td>

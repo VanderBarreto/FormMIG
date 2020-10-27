@@ -6,10 +6,11 @@
   }
   #wrapper {
       margin-top: 0px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 100px;
+      margin-right: 100px;
       background-color: #FFFFFF;
-      width: 800px;   
+      width: 600px;   
+      
   }
   body {
       background-color: #E0E0E0;
@@ -52,13 +53,14 @@
   }
   #main {
       width: 560px;
-      float: left;
+      float: center;
       margin: 0 10px 50px 20px;   
       padding-right: 10px;
+      
   }
   #logo {
       padding: 10px;
-      float: left;
+      float: center;
   }
   #top_menu {
       float: right;
