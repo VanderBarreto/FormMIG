@@ -35,37 +35,37 @@ class ContactForm(forms.Form):
     dados_iniciais = Dados()
     dados_iniciais.buscar(id_revista)
     
-    op_publicacao = [("", ""),("Instituição privada","Instituição privada"),("Instituição pública","Instituição pública"),("Organização não governamental(ONG)","Organização não governamental(ONG)"), ("Publicação independente","Publicação independente"), ("Sociedade civil organizada (sindicatos, associações, cooperativas etc.)","Sociedade civil organizada (sindicatos, associações, cooperativas etc.)")]
-    
-    op_area = [(1,"area1"),(2,"area2")]
+    op_publicacao = [("", ""),("Instituição privada","Instituição privada"),("Instituição pública","Instituição pública"),\
+                     ("Organização não governamental(ONG)","Organização não governamental(ONG)"), ("Publicação independente","Publicação independente"), \
+                     ("Sociedade civil organizada (sindicatos, associações, cooperativas etc.)","Sociedade civil organizada (sindicatos, associações, cooperativas etc.)")]
     
     
     #Itens
     #Pagina Um
     
-    dccontributoreditor = forms.CharField(max_length=200, label='Editor Responsavel', initial = dados_iniciais.retorno('dc.contributor.editor'))
-    dcdescriptionabastract = forms.CharField(widget=forms.Textarea,label='Descrição da Revista',initial = dados_iniciais.retorno('dc.description.abstract'))
-    dctitle = forms.CharField(max_length=200, label='Titulo',initial = dados_iniciais.retorno('dc.title'))
-    dctitleabbreviated = forms.CharField(max_length=100, label='Titulo abreviado',initial = dados_iniciais.retorno('dc.title.abbreviated'))
-    dctitleproper = forms.CharField(max_length=100, label='Titulo próprio',initial = dados_iniciais.retorno('dc.title.proper'))
+
+    dcdescriptionabastract = forms.CharField(widget=forms.Textarea,label='Descrição',initial = dados_iniciais.retorno('dc.description.abstract'))
+    dctitle = forms.CharField(max_length=200, label='Título',initial = dados_iniciais.retorno('dc.title'))
+    dctitleabbreviated = forms.CharField(max_length=100, label='Título abreviado',initial = dados_iniciais.retorno('dc.title.abbreviated'))
+    dctitleproper = forms.CharField(max_length=100, label='Título próprio',initial = dados_iniciais.retorno('dc.title.proper'))
     dctitleother = forms.CharField(max_length=100, label='Outros Títulos',initial = dados_iniciais.retorno('dc.title.other'))
     dctitleprevious = forms.CharField(max_length=100, label='Título anterior',initial = dados_iniciais.retorno('dc.title.previous'))
-    dctitlelater = forms.CharField(max_length=100, label='Titulo posterior',initial = dados_iniciais.retorno('dc.title.later'))
+    dctitlelater = forms.CharField(max_length=100, label='Título posterior',initial = dados_iniciais.retorno('dc.title.later'))
     dcidentifierissn = forms.CharField(max_length=100, label='ISSN',initial = dados_iniciais.retorno('dc.identifier.issn'))
-    dcidentifierissnl = forms.CharField(max_length=100, label='ISSNL',initial = dados_iniciais.retorno('dc.identifier.issnl'))
+    dcidentifierissnl = forms.CharField(max_length=100, label='ISSN-L',initial = dados_iniciais.retorno('dc.identifier.issnl'))
     op_dcdescriptionsituation = [("", ""),("Vigente","Vigente"),("Descontinuada","Descontinuada")]
-    dcdescriptionsituation = forms.ChoiceField(choices=op_dcdescriptionsituation,label='Informe a situação da revista',initial = dados_iniciais.retorno('dc.description.situation'))
-    dcdatestartyear = forms.DateField(label = 'Informe o ano de publicação',initial = dados_iniciais.retorno('dc.date.startyear'))
+    dcdescriptionsituation = forms.ChoiceField(choices=op_dcdescriptionsituation,label='Situação',initial = dados_iniciais.retorno('dc.description.situation'))
+    dcdatestartyear = forms.DateField(label = 'Ano de início de publicação',initial = dados_iniciais.retorno('dc.date.startyear'))
     dcdateendyear = forms.DateField(label = 'Ano de finalização de publicação',initial = dados_iniciais.retorno('dc.date.endyear'))
-    dcidentifierurl = forms.CharField(max_length=100, label='URL da revista',initial = dados_iniciais.retorno('dc.identifier.url'))
+    dcidentifierurl = forms.CharField(max_length=100, label='URL',initial = dados_iniciais.retorno('dc.identifier.url'))
     dcidentifierinteroperabilityprotocol = forms.CharField(max_length=100, label='Protocolo de interoperabilidade', initial = dados_iniciais.retorno('dc.identifier.interoperabilityprotocol'))
     dcidentifierpersistentidentifier = forms.CharField(max_length=100, label='Identificador persistente',initial = dados_iniciais.retorno('dc.identifier.persistentidentifier'))
     op_dclanguages = [("", ""),("português","português"),("inglês","inglês")]
-    dclanguages = forms.ChoiceField(choices=op_dclanguages, label='Idioma',initial = dados_iniciais.retorno('dc.languages'))    
+    dclanguages = forms.ChoiceField(choices=op_dclanguages, label='Idioma de publicação',initial = dados_iniciais.retorno('dc.languages'))    
 
     # Pagina dois
     
-    dcsubjectcnpq = forms.ChoiceField(widget=forms.Textarea, label='Area do conhecimento',initial = dados_iniciais.retorno('dc.subject.cnpq'))
+    dcsubjectcnpq = forms.ChoiceField(widget=forms.Textarea, label='Áreas do conhecimento',initial = dados_iniciais.retorno('dc.subject.cnpq'))
     dcpublishername = forms.CharField(max_length=100, label='Instituição editora',initial = dados_iniciais.retorno('dc.publisher.name'))
     dcpublishersubordinate = forms.CharField(max_length=100, label='Organismo subordinado',initial = dados_iniciais.retorno('dc.publisher.subordinate'))
     dcidentifierpublisher = forms.CharField(max_length=100, label='Identificador da instituição editora',initial = dados_iniciais.retorno('dc.identifier.publisher'))
