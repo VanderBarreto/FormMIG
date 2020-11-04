@@ -69,7 +69,7 @@ class ContactForm(forms.Form):
     dcpublishername = forms.CharField(max_length=100, label='Instituição editora',initial = dados_iniciais.retorno('dc.publisher.name'))
     dcpublishersubordinate = forms.CharField(max_length=100, label='Organismo subordinado',initial = dados_iniciais.retorno('dc.publisher.subordinate'))
     dcidentifierpublisher = forms.CharField(max_length=100, label='Identificador da instituição editora',initial = dados_iniciais.retorno('dc.identifier.publisher'))
-    op_dcpublisherlegalnature = [("", ""),("Instituição privada","Instituição privada"),\
+    op_dcpublisherlegalnature = [("",""),("Instituição privada","Instituição privada"),\
                                  ("Instituição pública","Instituição pública"),\
                                  ("Organização não governamental(ONG)","Organização não governamental(ONG)"),\
                                  ("Publicação independente","Publicação independente"),\
@@ -81,7 +81,7 @@ class ContactForm(forms.Form):
     dcdescriptioncep = forms.CharField(max_length=100, label='Código Postal (CEP)',initial = dados_iniciais.retorno('dc.description.cep'))
     op_dcdescriptionstate = [("", ""),("Acre (AC)","Acre (AC)"),\
                              ("Alagoas (AL)","Alagoas (AL)"),\
-                             ("Amapá (AP)","Amapá (AP)"),\
+                             ("Amapá  (AP)","Amapá (AP)"),\
                              ("Amazonas (AM)","Amazonas (AM)"),\
                              ("Bahia (BA)","Bahia (BA)"),\
                              ("Ceará (CE)","Ceará (CE)"),\
@@ -92,12 +92,25 @@ class ContactForm(forms.Form):
                              ("Mato Grosso (MT)","Mato Grosso (MT)"),\
                              ("Mato Grosso do Sul (MS)","Mato Grosso do Sul (MS)"),\
                              ("Minas Gerais (MG)","Minas Gerais (MG)"),\
-                             ()]
+                             ("Pará (PA)","Pará (PA)"),\
+                             ("Paraíba (PB)","Paraíba (PB)"),\
+                             ("Paraná (PR)","Paraná (PR)"),\
+                             ("Pernambuco (PE)","Pernambuco (PE)"),\
+                             ("Piauí (PI)","Piauí (PI)"),\
+                             ("Rio de Janeiro (RJ)","Rio de Janeiro (RJ)"),\
+                             ("Rio Grande do Norte (RN)","Rio Grande do Norte (RN)"),\
+                             ("Rio Grande do Sul (RS)","Rio Grande do Sul (RS)"),\
+                             ("Rondônia (RO)","Rondônia (RO)"),\
+                             ("Roraima (RR)","Roraima (RR)"),\
+                             ("Santa Catarina (SC)","Santa Catarina (SC)"),\
+                             ("São Paulo (SP)","São Paulo (SP)"),\
+                             ("Sergipe (SE)","Sergipe (SE)"),\
+                             ("Tocantins (TO)","Tocantins (TO)")]
     dcdescriptionstate = forms.ChoiceField(choices=op_dcdescriptionstate, label='Estado (UF)', initial = dados_iniciais.retorno('dc.description.state'))
     dcdescriptioncity = forms.CharField(max_length=100, label='Cidade', initial = dados_iniciais.retorno('dc.description.city'))
     dcdescriptionneighborhood = forms.CharField(max_length=100, label='Bairro', initial = dados_iniciais.retorno('dc.description.neighborhood'))
-    dcdescriptionstreet = forms.CharField(max_length=100, label='Rua/quadra ou similar', initial = dados_iniciais.retorno('dc.description.street'))
-    dcdescriptionbuilding = forms.CharField(max_length=100, label='Casa/Prédio/ Sala ou similar', initial = dados_iniciais.retorno('dc.description.building'))
+    dcdescriptionstreet = forms.CharField(max_length=100, label='Rua/Quadra ou similar', initial = dados_iniciais.retorno('dc.description.street'))
+    dcdescriptionbuilding = forms.CharField(max_length=100, label='Casa/Prédio/Sala ou similar', initial = dados_iniciais.retorno('dc.description.building'))
     dcdescriptionphone = forms.CharField(max_length=100, label='Telefone',initial = dados_iniciais.retorno('dc.description.phone'))
     op_dcdescriptionmodalityofpublication = [("", ""),("Tradicional","Tradicional"),("Ahead of print","Ahead of print"),("Fluxo contínuo","Fluxo contínuo")]
     dcdescriptionmodalityofpublication = forms.ChoiceField(choices=op_dcdescriptionmodalityofpublication, label='Modalidades de publicação', initial = dados_iniciais.retorno('dc.description.modalityofpublication'))
@@ -106,7 +119,7 @@ class ContactForm(forms.Form):
     
     
     op_dcdescriptionperiodicity = [("", ""),("Publicação contínua","Publicação contínua"),("Anual","Anual"),("Bianual","Bianual"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quinquenal","Quinquenal"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
-    dcdescriptionperiodicity = forms.ChoiceField(choices=op_dcdescriptionperiodicity, label='Periodicidade de publicação', initial = dados_iniciais.retorno('dc.description.periodicity'))
+    dcdescriptionperiodicity = forms.ChoiceField(choices=op_dcdescriptionperiodicity, label='Periodicidade do fascículo', initial = dados_iniciais.retorno('dc.description.periodicity'))
     op_dcdatemonthofpublication = [("", ""),("Publicação contínua","Publicação contínua"),("Janeiro","Janeiro"),("Fevereiro","Fevereiro"),("Março","Março"),("Abril","Abril"),("Maio","Maio"),("Junho","Junho"),("Julho","Julho"),("Agosto","Agosto"),("Setembro","Setembro"),("Outubro","Outubro"),("Novembro","Novembro"),("Dezembro","Dezembro")]
     dcdatemonthofpublication = forms.ChoiceField(choices=op_dcdatemonthofpublication, label='Mês de publicação do fascículo', initial = dados_iniciais.retorno('dc.date.monthofpublication'))
     op_period_exp = [("", ""),("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quinquenal","Quinquenal"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]

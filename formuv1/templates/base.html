@@ -10,17 +10,19 @@
         {{ page_title|default:"Sua revista no MIGUILIN" }}
         {% endblock title %}
      </title>
+     
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
      <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+    
    </head>
    <body>
      <div id="wrapper">
-     <header id="header">
-       <div id="logo"><img src="{% static 'logomiguilim.png' %}" alt="" /></div>
+     <header class="container">
+       <div class="" id="logo"><img src="{% static 'logomiguilim.png' %}" alt="" /></div>
      </header>
      
     
-     <section id="main">
+     <section class="container main">
        {% block content %}
        <p>.</p>
        {% endblock content %}
