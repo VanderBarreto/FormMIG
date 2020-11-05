@@ -69,7 +69,7 @@ class Revistas:
             g_token=""
             g_link=""
             
-            return HttpResponseRedirect('/revista?submitted=True')
+            return HttpResponseRedirect('login')
             
 #                
         else:
