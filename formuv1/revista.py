@@ -53,36 +53,33 @@ class Revistas:
             
         if request.method == 'POST':
             
-            print('[{"key":"dc.contributor.editor","value":"'+str(request.POST.get('dccontributoreditor'))+'","language":"pt_BR"}]')
-            
             token = g_token
             end_dspace_metadata = "http://172.25.0.73:8080"+g_link+"/metadata"
             
             metadata ='[{"key":"dc.contributor.editor","value":"'+str(request.POST.get('dccontributoreditor'))+'","language":"pt_BR"},{"key":"dc.date.accessioned","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.date.available","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.identifier.issn","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.uri","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.language","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.subject.cnpq","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title.abbreviated","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title.proper","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.issnl","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.situation","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.date.startyear","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.url","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.publisher.name","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.publisher.legalnature","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.email","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR",{"key":"dc.description.cep","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.state","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.neighborhood","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.description.street","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.phone","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.periodicity","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.preprint","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.authorpostprint","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.journalpostprint","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.sealcolor","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.time","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.access","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.creativecommons","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.city","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"}]'
-            print(metadata)
+            #print(metadata)
             ComandoURL = 'curl --cookie "JSESSIONID='+token+'" -H "accept: application/json" -H "Content-Type: application/json" -X PUT '+end_dspace_metadata+" -d '"+metadata+"'"
             print(ComandoURL)
             os.system(ComandoURL)
             
             metadata=""
             token=""
-            g_token=""
-            g_link=""
             
-            return HttpResponseRedirect('login')
+            return HttpResponseRedirect('../login')
             
 #                
         else:
             
-            if g_link=="" or g_token=="":
-                mensagem = "Login Inválido"
+            print("\ntoken = "+g_token)
+            print("\nlink = "+g_link)
+            
+            if g_token=="":
+                mensagem = ""
                 return render(request, 'revista/login.html', {"mensagem": mensagem})
                            
             else:
-                
                 print("momento 2")
                 form = Revistas.carregar(request,1)
-            
                 if 'submitted' in request.GET:
                     submitted = True
         
@@ -123,6 +120,7 @@ class Login:
                 
                 self.link_global = Autentica.procuraissn(self.revista_global)
                 g_link = Autentica.procuraissn(self.revista_global)
+                print("\nlink = "+g_link)
                 (cod, token) = Autentica.autenticar(self.user_global,self.senha_global)
                 self.token_global = token 
                 g_token = token
