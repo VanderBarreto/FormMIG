@@ -13,9 +13,6 @@ import json
 g_link=""
 form = None
 g_token=""
-#def carregar():
-#    ContactForm()
-    
 
 class Revistas:
     
@@ -23,12 +20,6 @@ class Revistas:
     def __init__(self):
         
         print("\n carreguei \n")
-#        self.user_global=""
-#        self.senha_global=""
-#        self.revista_global=""
-#        self.link_global=""
-#        self.token_global=""
-#        self.aqui_global = True
     
     def carregar(request,Id):
         
@@ -58,6 +49,7 @@ class Revistas:
         global form
         
         submitted = False
+        
             
         if request.method == 'POST':
             
@@ -66,31 +58,33 @@ class Revistas:
             token = g_token
             end_dspace_metadata = "http://172.25.0.73:8080"+g_link+"/metadata"
             
-            #metadata = '[{"key":"dc.description.abstract","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title","value":"'+str(request.POST.get('dctitle'))+'","language":null},{"key":"dc.title.abbreviated","value":"'+str(request.POST.get('dctitleabbreviated'))+'","language":null},{"key":"dc.title.proper","value":"'+str(request.POST.get('dctitleproper'))+'","language":"pt_BR"}]'
-            
-            #print(json.dumps(metadata)) 
-            
-            
-            metadata = '[{"key":"dc.contributor.editor","value":"'+str(request.POST.get('dccontributoreditor'))+'","language":"pt_BR"}]'
+            metadata ='[{"key":"dc.contributor.editor","value":"'+str(request.POST.get('dccontributoreditor'))+'","language":"pt_BR"},{"key":"dc.date.accessioned","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.date.available","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.identifier.issn","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.uri","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.language","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.subject.cnpq","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title.abbreviated","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.title.proper","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.issnl","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.situation","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.date.startyear","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.url","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.publisher.name","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.publisher.legalnature","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.identifier.email","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR",{"key":"dc.description.cep","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.state","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.neighborhood","value":"'+str(request.POST.get('dcdescriptionabastract'))+'"},{"key":"dc.description.street","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.phone","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.periodicity","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.preprint","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.authorpostprint","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.journalpostprint","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.sealcolor","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.time","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.access","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.rights.creativecommons","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.relation.informationservices","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"},{"key":"dc.description.city","value":"'+str(request.POST.get('dcdescriptionabastract'))+'","language":"pt_BR"}]'
             print(metadata)
             ComandoURL = 'curl --cookie "JSESSIONID='+token+'" -H "accept: application/json" -H "Content-Type: application/json" -X PUT '+end_dspace_metadata+" -d '"+metadata+"'"
             print(ComandoURL)
-            #os.system(ComandoURL)
+            os.system(ComandoURL)
             
             metadata=""
-            toke=""
-            
+            token=""
+            g_token=""
+            g_link=""
             
             return HttpResponseRedirect('/revista?submitted=True')
             
 #                
         else:
             
-            print("momento 2")
-            form = Revistas.carregar(request,1)
+            if g_link=="" or g_token=="":
+                mensagem = "Login Inválido"
+                return render(request, 'revista/login.html', {"mensagem": mensagem})
+                           
+            else:
+                
+                print("momento 2")
+                form = Revistas.carregar(request,1)
             
-            if 'submitted' in request.GET:
-                submitted = True
+                if 'submitted' in request.GET:
+                    submitted = True
         
     
         return render(request, 'revista/revista.html', {'form': form, 'submitted': submitted})
@@ -112,10 +106,8 @@ class Login:
         self.token_global=""
         g_link = ""
         g_token = ""
-        #Revistas.carregar(request,1)
         Autentica=Logar()
         mensagem = "Atualize sua revista"
-        
         
         
         
@@ -141,8 +133,6 @@ class Login:
                 
                     if cod == "0" :
                         
-                        #Revistas.carregar()
-                        
                         return HttpResponseRedirect('/revista')
                         
     #                    if user.is_active:
@@ -150,9 +140,10 @@ class Login:
     #                        return HttpResponseRedirect('/revista')
     #                    else:
     #                        return HttpResponse("Your account was inactive.")
+    
                     else:
-                      
-                        return HttpResponse("Invalid login details given")
+                        mensagem = "Login Inválido"
+                        return render(request, 'revista/login.html', {"mensagem": mensagem})
                 else:
                     mensagem = "ISSN incorreto"
                     return render(request, 'revista/login.html', {"mensagem": mensagem})
