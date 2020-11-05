@@ -73,15 +73,15 @@ class Revistas:
             print("\ntoken = "+g_token)
             print("\nlink = "+g_link)
             
-            if g_token=="":
-                mensagem = ""
-                return render(request, 'revista/login.html', {"mensagem": mensagem})
-                           
-            else:
-                print("momento 2")
-                form = Revistas.carregar(request,1)
-                if 'submitted' in request.GET:
-                    submitted = True
+#            if g_token=="":
+#                mensagem = ""
+#                return render(request, 'revista/login.html', {"mensagem": mensagem})
+#                           
+#            else:
+            print("momento 2")
+            form = Revistas.carregar(request,1)
+            if 'submitted' in request.GET:
+                submitted = True
         
     
         return render(request, 'revista/revista.html', {'form': form, 'submitted': submitted})
