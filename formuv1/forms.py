@@ -35,16 +35,12 @@ class ContactForm(forms.Form):
     dados_iniciais = Dados()
     dados_iniciais.buscar(id_revista)
     
-    op_publicacao = [("", ""),("Instituição privada","Instituição privada"),("Instituição pública","Instituição pública"),\
-                     ("Organização não governamental(ONG)","Organização não governamental(ONG)"), ("Publicação independente","Publicação independente"), \
-                     ("Sociedade civil organizada (sindicatos, associações, cooperativas etc.)","Sociedade civil organizada (sindicatos, associações, cooperativas etc.)")]
-    
     
     #Itens
     #Pagina Um
     
 
-    dcdescriptionabastract = forms.CharField(widget=forms.Textarea,label='Descrição',initial = dados_iniciais.retorno('dc.description.abstract'))
+    dcdescriptionabastract = forms.CharField(widget=forms.Textarea,label='Descrição',required=True, initial = dados_iniciais.retorno('dc.description.abstract'))
     dctitle = forms.CharField(max_length=200, label='Título',initial = dados_iniciais.retorno('dc.title'))
     dctitleabbreviated = forms.CharField(max_length=100, label='Título abreviado',initial = dados_iniciais.retorno('dc.title.abbreviated'))
     dctitleproper = forms.CharField(max_length=100, label='Título próprio',initial = dados_iniciais.retorno('dc.title.proper'))
@@ -53,7 +49,7 @@ class ContactForm(forms.Form):
     dctitlelater = forms.CharField(max_length=100, label='Título posterior',initial = dados_iniciais.retorno('dc.title.later'))
     dcidentifierissn = forms.CharField(max_length=100, label='ISSN',initial = dados_iniciais.retorno('dc.identifier.issn'))
     dcidentifierissnl = forms.CharField(max_length=100, label='ISSN-L',initial = dados_iniciais.retorno('dc.identifier.issnl'))
-    op_dcdescriptionsituation = [("", ""),("Vigente","Vigente"),("Descontinuada","Descontinuada")]
+    op_dcdescriptionsituation = [("", ""),("Vigente","Vigente"),("Descontinuada (deixou de ser publicada)","Descontinuada (deixou de ser publicada)")]
     dcdescriptionsituation = forms.ChoiceField(choices=op_dcdescriptionsituation,label='Situação',initial = dados_iniciais.retorno('dc.description.situation'))
     dcdatestartyear = forms.DateField(label = 'Ano de início de publicação',initial = dados_iniciais.retorno('dc.date.startyear'))
     dcdateendyear = forms.DateField(label = 'Ano de finalização de publicação',initial = dados_iniciais.retorno('dc.date.endyear'))
@@ -71,7 +67,7 @@ class ContactForm(forms.Form):
     dcidentifierpublisher = forms.CharField(max_length=100, label='Identificador da instituição editora',initial = dados_iniciais.retorno('dc.identifier.publisher'))
     op_dcpublisherlegalnature = [("",""),("Instituição privada","Instituição privada"),\
                                  ("Instituição pública","Instituição pública"),\
-                                 ("Organização não governamental(ONG)","Organização não governamental(ONG)"),\
+                                 ("Organização não governamental (ONG)","Organização não governamental (ONG)"),\
                                  ("Publicação independente","Publicação independente"),\
                                  ("Sociedade civil organizada (sindicatos, associações, cooperativas etc.)","Sociedade civil organizada (sindicatos, associações, cooperativas etc.)")]
     dcpublisherlegalnature = forms.ChoiceField(choices=op_dcpublisherlegalnature, label='Natureza jurídica da instituição editora',initial = dados_iniciais.retorno('dc.publisher.legalnature'))
@@ -118,11 +114,11 @@ class ContactForm(forms.Form):
     #Pagina Tres
     
     
-    op_dcdescriptionperiodicity = [("", ""),("Publicação contínua","Publicação contínua"),("Anual","Anual"),("Bianual","Bianual"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quinquenal","Quinquenal"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
+    op_dcdescriptionperiodicity = [("", ""),("Publicação contínua","Publicação contínua"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
     dcdescriptionperiodicity = forms.ChoiceField(choices=op_dcdescriptionperiodicity, label='Periodicidade do fascículo', initial = dados_iniciais.retorno('dc.description.periodicity'))
     op_dcdatemonthofpublication = [("", ""),("Publicação contínua","Publicação contínua"),("Janeiro","Janeiro"),("Fevereiro","Fevereiro"),("Março","Março"),("Abril","Abril"),("Maio","Maio"),("Junho","Junho"),("Julho","Julho"),("Agosto","Agosto"),("Setembro","Setembro"),("Outubro","Outubro"),("Novembro","Novembro"),("Dezembro","Dezembro")]
     dcdatemonthofpublication = forms.ChoiceField(choices=op_dcdatemonthofpublication, label='Mês de publicação do fascículo', initial = dados_iniciais.retorno('dc.date.monthofpublication'))
-    op_period_exp = [("", ""),("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quinquenal","Quinquenal"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
+    op_period_exp = [("", ""),("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
     dcdescriptioneditorialboardpreiodicity = forms.ChoiceField(choices=op_period_exp, label='Periodicidade de publicação do expediente', initial = dados_iniciais.retorno('dc.description.editorialboardpreiodicity'))
     op_mes_exp = [("", ""),("Janeiro","Janeiro"),("Fevereiro","Fevereiro"),("Março","Março"),("Abril","Abril"),("Maio","Maio"),("Junho","Junho"),("Julho","Julho"),("Agosto","Agosto"),("Setembro","Setembro"),("Outubro","Outubro"),("Novembro","Novembro"),("Dezembro","Dezembro")]
     dcdateeditorialboardmonthofpublication = forms.ChoiceField(choices=op_mes_exp, label='Mês de publicação do expediente', initial = dados_iniciais.retorno('dc.date.editorialboardmonthofpublication'))
@@ -140,8 +136,8 @@ class ContactForm(forms.Form):
                                            ('A revista não publica o nome dos avaliadores, mas disponibiliza a lista de pesquisadores cadastrados como possíveis avaliadores','A revista não publica o nome dos avaliadores, mas disponibiliza a lista de pesquisadores cadastrados como possíveis avaliadores'),\
                                            ('A revista não publica, nem revela o nome dos avaliadores','A revista não publica, nem revela o nome dos avaliadores')] 
     dcdescriptionreviewerstypeofpublication = forms.ChoiceField(choices=op_dcdescriptionreviewerstypeofpublication, label='Forma de publicação do nome dos avaliadores', initial = dados_iniciais.retorno('dc.description.reviewerstypeofpublication'))
-    op_dcdescriptionreviewersperiodicityofpublication = [("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quinquenal","Quinquenal"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
-    dcdescriptionreviewersperiodicityofpublication = forms.ChoiceField(choices=op_dcdescriptionreviewersperiodicityofpublication, label='Periodicidade de publicação do nome dos avaliadores', initial = dados_iniciais.retorno('dc.description.reviewerstypeofpublication'))
+    op_dcdescriptionreviewersperiodicityofpublication = [("", ""),("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
+    dcdescriptionreviewersperiodicityofpublication = forms.ChoiceField(choices=op_dcdescriptionreviewersperiodicityofpublication, label='Periodicidade de publicação dos avaliadores', initial = dados_iniciais.retorno('dc.description.reviewerstypeofpublication'))
     op_dcdescriptionpeerreviewexternality =[("", ""),("A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista","A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista"),\
                                             ("A avaliação por pares é realizada por pesquisadores da instituiçao que edita a revista e por pesquisadores que são externos à instituição que edita a revista","A avaliação por pares é realizada por pesquisadores da instituiçao que edita a revista e por pesquisadores que são externos à instituição que edita a revista"),\
                                             ("A avaliação por pares é realizada, exclusivamente, por pesquisadores que são externos à instituição que edita a revista","A avaliação por pares é realizada, exclusivamente, por pesquisadores que são externos à instituição que edita a revista")]
@@ -194,7 +190,7 @@ class ContactForm(forms.Form):
     dcdescriptionsubmissionfees = forms.CharField(max_length=100, label='Taxa de submissão de artigos',initial = dados_iniciais.retorno('dc.description.submissionfees'))
     dcdescriptionapc = forms.CharField(max_length=100, label='Taxa de processamento de artigos (APC)', initial = dados_iniciais.retorno('dc.description.apc'))
     dcdescriptioncodeofethics = forms.CharField(max_length=100, label='Código de ética',initial = dados_iniciais.retorno('dc.description.codeofethics'))
-    dcdescriptionreferenceguidelines = forms.CharField(max_length=100, label='Padrão de normalização bibiográfico',initial = dados_iniciais.retorno('dc.description.referenceguidelines'))
+    dcdescriptionreferenceguidelines = forms.CharField(max_length=100, label='Padrão de normalização bibiográfica',initial = dados_iniciais.retorno('dc.description.referenceguidelines'))
     dcdescriptionplagiarismdetection = forms.CharField(max_length=100, label='Plataforma de detecção de plágio',initial = dados_iniciais.retorno('dc.description.plagiarismdetection') )
     dcdescriptiondigitalpreservation = forms.CharField(max_length=100, label='Estratégia de preservação digital', initial = dados_iniciais.retorno('dc.description.digitalpreservation'))
     op_dcrightsresearchdata = [("", ""),("A revista exige que os autores publiquem os dados que deram origem à pesquisa em repositórios e/ou revistas de dados","A revista exige que os autores publiquem os dados que deram origem à pesquisa em repositórios e/ou revistas de dados"),\
@@ -264,7 +260,7 @@ class ContactForm(forms.Form):
                                             ("C","C")]
     dcdescriptionqualisclassification = forms.ChoiceField(choices=op_dcdescriptionqualisclassification, label='Classificação Qualis-Periódicos',initial = dados_iniciais.retorno('dc.description.qualisclassification'))
     dcdescriptionsocialnetworks = forms.CharField(max_length=100, label='Redes Sociais',initial = dados_iniciais.retorno('dc.description.socialnetworks"'))
-    dcrelationinformationservices = forms.CharField(max_length=100, label='Serviço de informação',initial = dados_iniciais.retorno('dc.relation.informationservices'))
+    dcrelationinformationservices = forms.CharField(max_length=100, label='Serviços de informação',initial = dados_iniciais.retorno('dc.relation.informationservices'))
     dcidentifierjournalsportaluri = forms.CharField(max_length=100, label='Portal de periódicos',initial = dados_iniciais.retorno('dc.identifier.journalsportaluri'))
     dcrelationoasisbr = forms.CharField(max_length=100, label='Artigos da revista no Portal oasisbr',initial = dados_iniciais.retorno('dc.relation.oasisbr'))
     

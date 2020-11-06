@@ -23,14 +23,10 @@ class Revistas:
     
     def carregar(request,Id):
         
-        global form
-        
         if Id == 1:
             from .forms import ContactForm
             print("entrei em 1\n")
-            form_class = ContactForm
-            print(type(form))
-            
+            form_class = ContactForm            
             return form_class
         
         if Id == 2:
@@ -64,7 +60,7 @@ class Revistas:
             
             metadata=""
             token=""
-            
+            form=None
             return HttpResponseRedirect('../login')
             
 #                
@@ -73,15 +69,15 @@ class Revistas:
             print("\ntoken = "+g_token)
             print("\nlink = "+g_link)
             
-#            if g_token=="":
-#                mensagem = ""
-#                return render(request, 'revista/login.html', {"mensagem": mensagem})
-#                           
-#            else:
-            print("momento 2")
-            form = Revistas.carregar(request,1)
-            if 'submitted' in request.GET:
-                submitted = True
+            if g_token=="":
+                mensagem = ""
+                return render(request, 'revista/login.html', {"mensagem": mensagem})
+                           
+            else:
+                print("momento 2")
+                form = Revistas.carregar(request,1)
+                if 'submitted' in request.GET:
+                    submitted = True
         
     
         return render(request, 'revista/revista.html', {'form': form, 'submitted': submitted})
