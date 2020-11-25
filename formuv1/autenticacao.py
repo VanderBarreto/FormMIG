@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 28 16:31:06 2020
-
-@author: vanderneto
-"""
-
 import os
 import xml.etree.ElementTree as etree
 
@@ -19,22 +11,17 @@ class Logar():
     
     def inf_login(self):
         
-        #if email == None and senha == None:
-        #    print(sem informação, retorno valor guardado)
-        #    
-        #else 
-        #    saida=
-        
         return [self.__email,self.__senha]
     
         
-    def autenticar(self, email, senha):
+    def autenticar(self, email, senha, end_dspace):
         
         self.__email= email
         self.__senha= senha
         
         info_login = '"email='+str(email)+'&password='+str(senha)+'"'
-        end_dspace = 'http://172.25.0.73:8080'
+        #end_dspace = "http://172.25.0.73:8080"
+        #end_dspace = "http://10.0.0.104:8080"
         nome_cookie = "./cookies/"+str(email)+".txt"
         comandoLogin =  "curl -X POST -d "+info_login+" "+end_dspace+"/rest/login -c "+nome_cookie
         print(comandoLogin)
@@ -46,12 +33,7 @@ class Logar():
             arq_cookie = file.read().replace('\n', '')
         file.close()
         token= arq_cookie[-32:]
-        print("no autentica "+token)
-#        retornoo = subprocess.Popen(comandoLogin, stdout=subprocess.PIPE , shell=True )
-#        ret = subprocess.check_output(comandoLogin , shell=True)
-#        (out, err) = retornoo.communicate()
-        
-        #comandoConfirma = "curl -H 'Accept: application/json' "+end_dspace+"/status -b cookies.txt"
+        #print("no autentica "+token)
         
         if retorno[56:60] == "":    
             cod = "0"
@@ -60,14 +42,13 @@ class Logar():
         
         return [cod,token]
     
-    def procuraissn(self,issn):
+    def procuraissn(self,issn,end_dspace):
         
-        
-        #issn="1678-6408"
         data_issn='{"key":"dc.identifier.issn","value":"'+issn+'","language":"pt_BR"}'
-        
-        ComandoISSN = 'curl -H "Accept: application/xml" -H "Content-Type: application/json" -d '+"'"+data_issn+"'"+' -X POST "http://172.25.0.73:8080/rest/items/find-by-metadata-field"'
-        
+        #end_dspace = "http://172.25.0.73:8080"
+        #end_dspace = "http://10.0.0.104:8080"
+        ComandoISSN = 'curl -H "Accept: application/xml" -H "Content-Type: application/json" -d '+"'"+data_issn+"'"+' -X POST "'+end_dspace+'/rest/items/find-by-metadata-field"'
+        print(ComandoISSN)
         retorno = os.popen(ComandoISSN).read()
         
         root = etree.fromstring(retorno)
@@ -77,5 +58,3 @@ class Logar():
             print(link)
             
         return link
-        
-        #comandoConfirma = "curl -H 'Accept: application/json' "+end_dspace+"/status -b cookies.txt"

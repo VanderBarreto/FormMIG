@@ -9,20 +9,28 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
  
-    <h2>Neste formulário você tem acesso a todos os campos do registro da revista no Diretório das revistas científicas eletrônicas brasileiras (Miguilim). Os dados aqui informados serão automaticamente incorporados ao registro da revista no Miguilim, cabendo à equipe gestora verificá-los posteriormente. Deste modo, é importante que os dados sejam atualizados pelo (a) editor (a) responsável e/ou membros da equipe editorial. Em caso de dúvidas, entre em contato com a Equipe Miguilim por meio do e-mail: <b>revistas@ibict.br</b></h2>
-    <h1>dc.title</h1>
-    
+    <p><h2>Neste formulário você tem acesso a todos os campos do registro da revista <FONT color=blue> {{ nomerevista }}</FONT> no Diretório das revistas científicas eletrônicas brasileiras (Miguilim).
+    <p>Os dados aqui informados serão automaticamente incorporados ao registro da revista no Miguilim, cabendo à equipe gestora verificá-los posteriormente. Deste modo, é importante que os dados sejam atualizados pelo (a) editor (a) responsável e/ou membros da equipe editorial.</p>
+    <p>Em caso de dúvidas, entre em contato com a Equipe Miguilim por meio do e-mail: <b>revistas@ibict.br</b> </h2>
+        
+    <h2></h2>
+    <p></p>
      {% if submitted %}
         <p class="success">
-         Metadados Atualizado com Sucesso.
+         A Revista foi atualizado com Sucesso.        
+        </p>
+         <p><a href="http://localhost:8000/login">Faça uma nova Atualização</a>        
         </p>
      
      {% else %}
-        
+        <p></p>
+    <p></p>
              
             <form action="" method="post" novalidate enctype="multipart/form-data">
             <table>
+               
             {{ form|crispy }}
+        
             <tr>
             <td>&nbsp;</td>
             <td><button type="submit" class="btn btn-primary">Atualizar</button></td>

@@ -10,8 +10,9 @@
  <h1> {{ mensagem }} </h1>
  
       
-      <div style="background:#E6E7E8!important" class="jumbotron">
-      <h1>Acesse sua Revista:</h1>
+      <div style="background:#E6E7E8!important" class="col-md-6 offset-md-3">
+        <div width: 600px;>
+        <h1>Acesse sua Revista:</h1>
 <form method="post" action="">
   {% load crispy_forms_tags %}       
   {% csrf_token %}
@@ -27,7 +28,12 @@
           <p>
 <input type="submit" name="" value="Acessar">
 
+<p><a href="http://10.0.0.103:8080/jspui">Faça seu cadastro no Miguilin</a>        
+        </p>
+<p><a href="http://10.0.0.103:8080/jspui">Esqueci minha senha</a>        
+        </p>
 </form>
+</div>
 </div>
   </div>
 {% endblock %}

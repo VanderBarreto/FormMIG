@@ -16,13 +16,16 @@
     
    </head>
    <body>
-     <div id="wrapper">
-     <header class="container">
-       <div class="" id="logo"><img src="{% static 'logomiguilim.png' %}" alt="" /></div>
+      
+      <div id="wrapper">
+     
+     <header class= "row col-xs-7 col-sm-7 col-md-7 col-lg-7 ">
+      <div id="logo"><img src="{% static 'logomiguilim.png' %}" alt="" /></div>
      </header>
      
     
-     <section class="container main">
+     <section class="">
+       
        {% block content %}
        <p>.</p>
        {% endblock content %}

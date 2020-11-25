@@ -6,16 +6,15 @@
       
   }
   #wrapper {
-   
-    
     margin: 0 auto;
-    width: 50%;
     background-color:#E6E7E8;
-    width: 600px;   
+    width: 80%;
+      
       
   }
   body {
-    background-color:#E6E7E8 !important;
+      
+      background-color:#E6E7E8 !important;
       font-family: 'Roboto light','Roboto', Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif";
       font-size: 0.9em;
       text-align: justify;
@@ -73,6 +72,9 @@
   }
   #logo {
       padding-top: 100px;
+      margin-left: auto;
+      
+      
      
   }
   #top_menu {
