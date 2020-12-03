@@ -11,7 +11,7 @@ from .enviodeemail import EnviodoEmail
 
 g_link=""
 g_token=""
-end_dspace = "http://10.0.0.104:8080"
+end_dspace = "http:/192.168.10.17:8080"
 #end_dspace = "http://172.25.0.73:8080"
 
 class Revistas:
@@ -133,7 +133,7 @@ class Revistas:
                 dados_iniciais.buscar(g_link,end_dspace)
                 nomerevista=dados_iniciais.retorno('dc.title')
                 print("\n"+dados_iniciais.retorno('dc.date.startyear')+"\n")
-                data = {"dcdescriptionabastract": dados_iniciais.retorno('dc.description.abstract'),\
+                info_entrada = {"dcdescriptionabastract": dados_iniciais.retorno('dc.description.abstract'),\
                         "dctitle": dados_iniciais.retorno('dc.title'),\
                         "dctitleabbreviated": dados_iniciais.retorno('dc.title.abbreviated'),\
                         "dctitleproper": dados_iniciais.retorno('dc.title.proper'),\
@@ -199,9 +199,9 @@ class Revistas:
                         "dcrelationinformationservices": dados_iniciais.retorno('dc.relation.informationservices'),\
                         "dcidentifierjournalsportaluri": dados_iniciais.retorno('dc.identifier.journalsportaluri'),\
                         "dcrelationoasisbr": dados_iniciais.retorno('dc.relation.oasisbr')}
-                print(data)
-                form = ContactForm(data)
-                data=None
+                print(info_entrada)
+                form = ContactForm(info_entrada) # as informações são carredas nesse momento
+                info_entrada=None
                 
                 if 'submitted' in request.GET:
                     submitted = True
@@ -248,6 +248,7 @@ class Login:
                 self.token_global = token 
                 g_token = token
                 print(g_token)
+                
                 #dados_login = Autentica.inf_login()
                 
                 if self.link_global != "":

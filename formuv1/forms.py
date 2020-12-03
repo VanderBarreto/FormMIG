@@ -5,14 +5,6 @@ class ContactForm(forms.Form):
 
     #Pagina Um
     
-
-    teste1 = forms.CharField(max_length=200, label='TEESTE', required=False)
-    teste2 = forms.CharField(max_length=200, label='TEESTE', required=False)
-    teste3 = forms.CharField(max_length=200, label='TEESTE', required=False)
-    teste4 = forms.CharField(max_length=200, label='TEESTE', required=False,widget=forms.HiddenInput())
-    
-#    for i in 10:
-#            fields[i] = forms.CharField(widget=forms.HiddenInput())
     
     descri_dcdescriptionabastract = "Descreva o escopo, foco ou objetivo da revista de maneira sucinta"
     dcdescriptionabastract = forms.CharField(widget=forms.Textarea,label='Descrição', help_text = descri_dcdescriptionabastract ,required=True)
@@ -305,7 +297,3 @@ class ContactForm(forms.Form):
     descri_relationoasisbr ="Indique a URL da busca do ISSN da revista no Portal oasisbr."
     dcrelationoasisbr = forms.CharField(max_length=100, label='Artigos da revista no Portal oasisbr',help_text= descri_relationoasisbr, required=False)
     
-    def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
-        for i in range(4):
-            self.fields['item_name_%d' % int(i)] = forms.CharField(label='TiiiiSTE')
