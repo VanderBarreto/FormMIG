@@ -21,12 +21,12 @@ class Dados:
     def buscar(self,id_revista,end_dspace):
         
         lista_metadados =[]
-        print("ID DA REVISTA"+str(id_revista))
+        #print("ID DA REVISTA"+str(id_revista))
         
         if str(id_revista) != "":
         
             ComandoURL = "curl -s -H 'accept: application/xml' "+end_dspace+str(id_revista)+"/metadata"
-            print(ComandoURL)
+            #print(ComandoURL)
             retorno = os.popen(ComandoURL).read()
             
             root = etree.fromstring(retorno)
