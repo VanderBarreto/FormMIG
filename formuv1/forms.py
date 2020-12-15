@@ -26,7 +26,7 @@ class ContactForm(forms.Form):
     dcidentifierissn = forms.CharField(max_length=100, label='ISSN', help_text = descri_dcidentifierissn, required=True)
     descri_dcidentifierissnl = "Informe o número de ISSN- L conforme consta no registro da revista na rede ISSN. Essa informação pode ser verificada no link: https://portal.issn.org/"
     dcidentifierissnl = forms.CharField(max_length=100, label='ISSN-L', help_text=descri_dcidentifierissnl, required=True)
-    op_dcdescriptionsituation = [("", ""),("Vigente","Vigente"),("Descontinuada (deixou de ser publicada)","Descontinuada (deixou de ser publicada)")]
+    op_dcdescriptionsituation = [("Vigente","Vigente"),("Descontinuada (deixou de ser publicada)","Descontinuada (deixou de ser publicada)")]
     descri_situation="Indique se a revista se encontra vigente ou se deixou de ser publicada."
     dcdescriptionsituation = forms.ChoiceField(choices=op_dcdescriptionsituation,label='Situação',help_text=descri_situation, required=True)
     descri_startyear="Informe o ano de início da publicação de acordo com o campo \"Dates of publication\", conforme consta no registro da revista na rede ISSN. Em alguns casos, essa informação pode ser verificada no link:https://portal.issn.org/"
@@ -53,7 +53,7 @@ class ContactForm(forms.Form):
     dcpublishersubordinate = forms.CharField(max_length=100, label='Organismo subordinado',help_text =descri_subordinate, required=False)
     descri_publisher="Indique a URL do cadastro da instituição editora em plataformas que geram um identificador único para instituição, como as plataformas GRID, ISNI e CADI por exemplo. Os endereços das plataformas GRID, ISNI e CADI são respectivamente: https://www.grid.ac/, http://www.grid.ac/, http://www.isni.org/, https://www.isni.org/ e http://di.cnpq.br/di/cadi/consultaInst.do , http://di.cnpq.br/di/cadi/consultaInst.do"
     dcidentifierpublisher = forms.CharField(max_length=100, label='Identificador da instituição editora',help_text= descri_publisher, required=False)
-    op_dcpublisherlegalnature = [("",""),("Instituição privada","Instituição privada"),\
+    op_dcpublisherlegalnature = [("Instituição privada","Instituição privada"),\
                                  ("Instituição pública","Instituição pública"),\
                                  ("Organização não governamental (ONG)","Organização não governamental (ONG)"),\
                                  ("Publicação independente","Publicação independente"),\
@@ -68,7 +68,7 @@ class ContactForm(forms.Form):
     dcidentifieremail = forms.EmailField(max_length=100, label='E-mail',help_text = descri_email, required=True) 
     descri_cep="Informe o código postal do local de contato da revista. Preenchimento: 99999-999."
     dcdescriptioncep = forms.CharField(max_length=100, label='Código Postal (CEP)',help_text=descri_cep,required=True)
-    op_dcdescriptionstate = [("", ""),("Acre (AC)","Acre (AC)"),\
+    op_dcdescriptionstate = [("Acre (AC)","Acre (AC)"),\
                              ("Alagoas (AL)","Alagoas (AL)"),\
                              ("Amapá  (AP)","Amapá (AP)"),\
                              ("Amazonas (AM)","Amazonas (AM)"),\
@@ -114,7 +114,7 @@ class ContactForm(forms.Form):
     #Pagina Tres
     
     
-    op_dcdescriptionperiodicity = [("", ""),("Publicação contínua","Publicação contínua"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
+    op_dcdescriptionperiodicity = [("Publicação contínua","Publicação contínua"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
     descri_periodicity="Indique a periodicidade de publicação dos fascículos. Caso a revista publique na modalidade Fluxo contínuo esta deve indicar que publica de forma contínua."
     dcdescriptionperiodicity = forms.ChoiceField(choices=op_dcdescriptionperiodicity, label='Periodicidade do fascículo',help_text=descri_periodicity, required=True)
     op_dcdatemonthofpublication = [("Publicação contínua","Publicação contínua"),("Janeiro","Janeiro"),("Fevereiro","Fevereiro"),("Março","Março"),("Abril","Abril"),("Maio","Maio"),("Junho","Junho"),("Julho","Julho"),("Agosto","Agosto"),("Setembro","Setembro"),("Outubro","Outubro"),("Novembro","Novembro"),("Dezembro","Dezembro")]
@@ -128,28 +128,28 @@ class ContactForm(forms.Form):
     #dcdateeditorialboardmonthofpublication = forms.ChoiceField(choices=op_mes_exp, label='Mês de publicação do expediente',help_text= descri_editorialboardmonthofpublication, required=False)
     dcdateeditorialboardmonthofpublication = forms.MultipleChoiceField(choices=op_mes_exp, label='Mês de publicação do expediente',help_text= descri_editorialboardmonthofpublication, required=False)
     dcdateeditorialboardmonthofpublication.widget.attrs.update(size='4')
-    op_mod_pub_pares = [("", ""),("Avaliação aberta","Avaliação aberta"),("Avaliação duplo-cego","Avaliação duplo-cego"),("Avaliação simples-cega","Avaliação simples-cega")]
+    op_mod_pub_pares = [("Avaliação aberta","Avaliação aberta"),("Avaliação duplo-cego","Avaliação duplo-cego"),("Avaliação simples-cega","Avaliação simples-cega")]
     #descri_peerreview="Informe o modelo de revisão por pares adotado pela revista.Avaliação aberta:as identidades dos autores e dos avaliadores são reveladas para ambos durante o processo de avaliação.Avaliação duplo-cega:as identidades dos autores e dos avaliadores não são reveladas para ambos durante o processo de avaliação. Avaliação simples-cega: as identidades dos autores são reveladas para os avaliadores, mas as dos avaliadores são mantidas em sigilo para os autores durante o processo de avaliação. "
     descri_peerreview="Informe o modelo de revisão por pares adotado pela revista."
     dcdescriptionpeerreview = forms.ChoiceField(choices=op_mod_pub_pares, label='Modalidade de avaliação por pares',help_text=descri_peerreview , required=True)
-    op_dcdescriptionreviewerspublication= [("", ""),('A revista publica o nome de avaliadores dos documentos que foram aprovados na avaliação por pares','A revista publica o nome de avaliadores dos documentos que foram aprovados na avaliação por pares'),\
+    op_dcdescriptionreviewerspublication= [('A revista publica o nome de avaliadores dos documentos que foram aprovados na avaliação por pares','A revista publica o nome de avaliadores dos documentos que foram aprovados na avaliação por pares'),\
                                            ('A revista publica o nome de todos os avaliadores que participaram da avaliação de documentos por determinado período','A revista publica o nome de todos os avaliadores que participaram da avaliação de documentos por determinado período'),\
                                            ('A revista somente publica avaliadores que concordam com a publicação do seu nome','A revista somente publica avaliadores que concordam com a publicação do seu nome'),\
                                            ('A revista não publica o nome dos avaliadores, mas disponibiliza a lista de pesquisadores cadastrados como possíveis avaliadores','A revista não publica o nome dos avaliadores, mas disponibiliza a lista de pesquisadores cadastrados como possíveis avaliadores'),\
                                            ('A revista não publica, nem revela o nome dos avaliadores','A revista não publica, nem revela o nome dos avaliadores')] 
     descri_reviewerspublication="Indique em que situação o nome dos avaliadores podem ser publicados."
     dcdescriptionreviewerspublication = forms.ChoiceField(choices=op_dcdescriptionreviewerspublication, label='Publicação dos avaliadores',help_text= descri_reviewerspublication, required=True)
-    op_dcdescriptionreviewerstypeofpublication= [("", ""),('A revista publica, no expediente, a listagem dos avaliadores que realizaram avaliações','A revista publica, no expediente, a listagem dos avaliadores que realizaram avaliações'),\
+    op_dcdescriptionreviewerstypeofpublication= [('A revista publica, no expediente, a listagem dos avaliadores que realizaram avaliações','A revista publica, no expediente, a listagem dos avaliadores que realizaram avaliações'),\
                                            ('A revista publica, no corpo do documento aprovado na avaliação por pares, o nome dos avaliadores responsáveis','A revista publica, no corpo do documento aprovado na avaliação por pares, o nome dos avaliadores responsáveis'),\
                                            ('A revista publica os pareceres resultantes das avaliações realizadas com o nome dos avaliadores','A revista publica os pareceres resultantes das avaliações realizadas com o nome dos avaliadores'),\
                                            ('A revista não publica o nome dos avaliadores, mas disponibiliza a lista de pesquisadores cadastrados como possíveis avaliadores','A revista não publica o nome dos avaliadores, mas disponibiliza a lista de pesquisadores cadastrados como possíveis avaliadores'),\
                                            ('A revista não publica, nem revela o nome dos avaliadores','A revista não publica, nem revela o nome dos avaliadores')] 
     descri_reviewerstypeofpublication="Indique a forma que se publica ou disponibiliza o nome dos avaliadores responsáveis pela revisão dos artigos submetidos à revista. Para marcar mais de uma opção mantenha pressionada a tecla “Control” (Ctrl) e selecione as opções desejadas."
     dcdescriptionreviewerstypeofpublication = forms.ChoiceField(choices=op_dcdescriptionreviewerstypeofpublication, label='Forma de publicação do nome dos avaliadores',help_text = descri_reviewerstypeofpublication,  required=True)
-    op_dcdescriptionreviewersperiodicityofpublication = [("", ""),("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
+    op_dcdescriptionreviewersperiodicityofpublication = [("Em branco","Em branco"),("Anual","Anual"),("Bianual","Bianual"),("Bimestral","Bimestral"),("Diária","Diária"),("Mensal","Mensal"),("Quadrienal","Quadrienal"),("Quadrienal","Quadrienal"),("Quadrimestral","Quadrimestral"),("Quinzenal","Quinzenal"),("Semanal","Semanal"),("Semestral","Semestral"),("Trianual","Trianual"),("Trimestral","Trimestral")]
     descri_reviewersperiodicityofpublication="Caso a revista publique os avaliadores via expediente, indique a periodicidade de publicação da lista de avaliadores que atuaram na revista. A periodicidade de publicação dos avaliadores não precisa, necessariamente, ser igual à periodicidade dos fascículos ou dos expedientes. A revista pode, por exemplo, publicar seus fascículos semestralmente e publicar os avaliadores via expediente a cada 2, 3 ou 4 fascículos. Caso a revista não publique seus avaliadores indique a resposta “Em branco”."
     dcdescriptionreviewersperiodicityofpublication = forms.ChoiceField(choices=op_dcdescriptionreviewersperiodicityofpublication, label='Periodicidade de publicação dos avaliadores', help_text = descri_reviewersperiodicityofpublication, required=False)
-    op_dcdescriptionpeerreviewexternality =[("", ""),("A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista","A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista"),\
+    op_dcdescriptionpeerreviewexternality =[("A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista","A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista"),\
                                             ("A avaliação por pares é realizada por pesquisadores da instituiçao que edita a revista e por pesquisadores que são externos à instituição que edita a revista","A avaliação por pares é realizada por pesquisadores da instituiçao que edita a revista e por pesquisadores que são externos à instituição que edita a revista"),\
                                             ("A avaliação por pares é realizada, exclusivamente, por pesquisadores que são externos à instituição que edita a revista","A avaliação por pares é realizada, exclusivamente, por pesquisadores que são externos à instituição que edita a revista")]
     descri_peerreviewexternality="Indique se a avaliação por pares adotada pela revista considera agentes externos, internos ou ambos. Opções de resposta: 1. A avaliação por pares é realizada, exclusivamente, por pesquisadores da instituição que edita a revista. 2. A avaliação por pares é realizada por pesquisadores da instituiçao que edita a revista e por pesquisadores que são externos à instituição que edita a revista. 3. A avaliação por pares é realizada, exclusivamente, por pesquisadores que são externos à instituição que edita a revista."
@@ -158,11 +158,11 @@ class ContactForm(forms.Form):
     dcdescriptionpeerreviewdocuments = forms.CharField(widget=forms.Textarea, label='Documentos avaliados',help_text= descri_peerreviewdocuments,required=True)
     descri_publishingresponsable="Indique a instância responsável pela decisão final de publicar ou não o (s) documento (s) depois que passam pelo processo de avaliação por pares. Exemplos: Avaliador (es), Editor responsável, Editor de seção, Editor executivo. Indique a resposta de acordo com as opções descritas na aba Opções de resposta. Caso as opções listadas não se adequem à realidade da revista, indique a resposta manualmente na caixa de texto."
     dccontributorpublishingresponsable = forms.CharField(max_length=100, label='Responsável pela decisão de publicação',help_text= descri_publishingresponsable, required=True)
-    op_dcrightspreprintsubmission = [("", ""),("A revista aceita a submissão de preprints que já se encontra armazenado em outras plataformas","A revista aceita a submissão de preprints que já se encontra armazenado em outras plataformas"),\
+    op_dcrightspreprintsubmission = [("A revista aceita a submissão de preprints que já se encontra armazenado em outras plataformas","A revista aceita a submissão de preprints que já se encontra armazenado em outras plataformas"),\
                                      ("A revista não aceita a submissão de preprints que já se encontra armazenado em outras plataformas.","A revista não aceita a submissão de preprints que já se encontra armazenado em outras plataformas")]
     descri_preprintsubmission="Informe se a revista aceita ou não a submissão de preprints que já se encontrem armazenados em plataformas de preprint. Preprint é a versão do documento (artigo original,artigo de revisão, tradução etc) que não passou por avaliação por pares e que, neste caso, foi previamente depositada em outras plataformas, antes mesmo de ser submetida à revista."
     dcrightspreprintsubmission = forms.ChoiceField(choices=op_dcrightspreprintsubmission, label='Permissão de submissão de preprint',help_text=descri_preprintsubmission ,required=True)
-    op_dcrightspreprint = [("", ""),("A revista permite o armazenamento e acesso, em repositórios institucionais/digitais, da versão preprint do documento submetido para avaliação.","A revista permite o armazenamento e acesso, em repositórios institucionais/digitais, da versão preprint do documento submetido para avaliação."),\
+    op_dcrightspreprint = [("A revista permite o armazenamento e acesso, em repositórios institucionais/digitais, da versão preprint do documento submetido para avaliação.","A revista permite o armazenamento e acesso, em repositórios institucionais/digitais, da versão preprint do documento submetido para avaliação."),\
                            ("A revista não permite o armazenamento e acesso, em repositórios institucionais/digitais, da versão preprint do documento submetido para avaliação.","A revista não permite o armazenamento e acesso, em repositórios institucionais/digitais, da versão preprint do documento submetido para avaliação.")]
     descri_rightspreprint="Informe se a revista permite ou não o armazenamento e acesso a versão preprint do documento submetido a revista em repositórios institucionais/digitais. Diferentemente da questão anterior nesta questão deve-se indicar se a revista permite ou não que a versão preprint de um documento aceito pela revista possa ser armazenado e acessado em repositórios institucionais/digitais."
     dcrightspreprint = forms.ChoiceField(choices=op_dcrightspreprint, label='Permissão de armazenamento e acesso à versão preprint',help_text =descri_rightspreprint ,required=True)
@@ -207,7 +207,7 @@ class ContactForm(forms.Form):
     descri_rightscreativecommons="Selecione, entre as licenças Licenças Creative Commons, aquela que define as condições estabelecidas pela revista para uso, adaptação e redistribuição dos conteúdos publicados. O conteúdo completo das Licenças Creative Commons pode ser acessado pelo link https://br.creativecommons.org/licencas/ , https://br.creativecommons.org/licencas/."
     dcrightscreativecommons = forms.ChoiceField(choices=op_dcrightscreativecommons, label='Licença Creative Commons',help_text = descri_rightscreativecommons, required=True, widget=forms.RadioSelect)
     #dcrightscreativecommons.widget.attrs.update(size='2')
-    op_dcdescriptionpublicationfees = [("", ""),("A revista cobra taxa de submissão de artigos","A revista cobra taxa de submissão de artigos"),\
+    op_dcdescriptionpublicationfees = [("A revista cobra taxa de submissão de artigos","A revista cobra taxa de submissão de artigos"),\
                                        ("A revista cobra taxa de processamento de artigos (APC)","A revista cobra taxa de processamento de artigos (APC)"),\
                                        ("A revista cobra taxa de submissão e de processamento de artigos","A revista cobra taxa de submissão e de processamento de artigos"),\
                                        ("A revista não cobra nenhuma taxa de publicação","A revista não cobra nenhuma taxa de publicação")]
@@ -225,7 +225,7 @@ class ContactForm(forms.Form):
     dcdescriptionplagiarismdetection = forms.CharField(max_length=100, label='Plataforma de detecção de plágio', help_text= descri_descriptionplagiarismdetection, required=False)
     descri_descriptiondigitalpreservation="Indique a estratégia de preservação digital adotada pela revista. Indique a resposta de acordo com as opções descritas na aba Opções de resposta. Caso as opções listadas não se adequem à realidade da revista, indique a resposta manualmente na caixa de texto. Exemplos: Lockss, CLockss, Pórtico, Archivematica."
     dcdescriptiondigitalpreservation = forms.CharField(max_length=100, label='Estratégia de preservação digital', help_text = descri_descriptiondigitalpreservation , required=True)
-    op_dcrightsresearchdata = [("", ""),("A revista exige que os autores publiquem os dados que deram origem à pesquisa em repositórios e/ou revistas de dados","A revista exige que os autores publiquem os dados que deram origem à pesquisa em repositórios e/ou revistas de dados"),\
+    op_dcrightsresearchdata = [("A revista exige que os autores publiquem os dados que deram origem à pesquisa em repositórios e/ou revistas de dados","A revista exige que os autores publiquem os dados que deram origem à pesquisa em repositórios e/ou revistas de dados"),\
                                ("A revista publica os dados que deram origem à pesquisa na própriarevista","A revista publica os dados que deram origem à pesquisa na própria revista"),\
                                ("A revista não exige que os autores publiquem os dados que deram origem à pesquisa","A revista não exige que os autores publiquem os dados que deram origem à pesquisa")]
     descri_rightsresearchdata="Informe se a revista exige que os autores disponibilizem os dados que deram origem à pesquisa publicada."
@@ -282,7 +282,7 @@ class ContactForm(forms.Form):
                                   ("Zootecnia / Recursos pesqueiros","Zootecnia / Recursos pesqueiros")]
     descri_descriptionqualisarea="Indique a área-mãe de avaliação da revista no estrato Qualis-Periódicos, de acordo com a classificação mais recente da revista. Caso a revista ainda não tenha sido avaliada, indique Revista não avaliada. Essa informação pode ser verificada pela busca por número de ISSN da revista no link: https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf "
     dcdescriptionqualisarea = forms.ChoiceField(choices=op_dcdescriptionqualisarea, label='Área de avaliação Qualis-Periódicos',help_text = descri_descriptionqualisarea, required=True)
-    op_dcdescriptionqualisclassification = [("", ""),("Revista não avaliada","Revista não avaliada"),\
+    op_dcdescriptionqualisclassification = [("Revista não avaliada","Revista não avaliada"),\
                                             ("A1","A1"),\
                                             ("A2","A2"),\
                                             ("A3","A3"),\
