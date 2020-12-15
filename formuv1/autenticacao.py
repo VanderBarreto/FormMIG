@@ -22,10 +22,10 @@ class Logar():
         info_login = '"email='+str(email)+'&password='+str(senha)+'"'
         nome_cookie = "./cookies/"+str(email)+".txt"
         comandoLogin =  "curl -X POST -d "+info_login+" "+end_dspace+"/rest/login -c "+nome_cookie
-        print(comandoLogin)
+        #print(comandoLogin)
         retorno = os.popen(comandoLogin).read()
         
-        print("\n\n"+str(retorno[56:60]))
+        #print("\n\n"+str(retorno[56:60]))
         
         with open(nome_cookie, 'r') as file:
             arq_cookie = file.read().replace('\n', '')
@@ -44,13 +44,13 @@ class Logar():
         
         data_issn='{"key":"dc.identifier.issn","value":"'+issn+'","language":"pt_BR"}'
         ComandoISSN = 'curl -H "Accept: application/xml" -H "Content-Type: application/json" -d '+"'"+data_issn+"'"+' -X POST "'+end_dspace+'/rest/items/find-by-metadata-field"'
-        print(ComandoISSN)
+        #print(ComandoISSN)
         retorno = os.popen(ComandoISSN).read()
         
         root = etree.fromstring(retorno)
         
         for item in root.findall('item'):
             link = item.find('link').text
-            print(link)
+            #print(link)
             
         return link

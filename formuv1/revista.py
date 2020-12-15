@@ -39,7 +39,7 @@ class Revistas:
                 end_dspace_metadata = end_dspace+g_link+"/metadata"
                 
                 nome_revista=str(request.POST.get('dctitle'))
-                print(nome_revista)
+                #print(nome_revista)
                 metadata ='[{"key":"dc.description.abstract","value":"'+str(request.POST.get('dcdescriptionabstract'))+'","language":"pt_BR"},\
                 {"key":"dc.title","value":"'+str(request.POST.get('dctitle'))+'","language":"pt_BR"},\
                 {"key":"dc.title.abbreviated","value":"'+str(request.POST.get('dctitleabbreviated'))+'","language":"pt_BR"},\
@@ -112,8 +112,8 @@ class Revistas:
                 print(ComandoURL)
                 os.system(ComandoURL)
                 
-                #enviaremail = EnviodoEmail
-                #enviado = enviaremail.envio(nome_revista)
+                enviaremail = EnviodoEmail
+                enviado = enviaremail.envio(nome_revista)
                 #print(enviado)
                 metadata=""
                 token=""
@@ -201,7 +201,7 @@ class Revistas:
                 #print(info_entrada)
                 form = ContactForm(info_entrada) # as informações são carredas nesse momento
                 info_entrada=None
-                print(form)
+                #print(form)
                 
                 if 'submitted' in request.GET:
                     submitted = True
@@ -242,11 +242,11 @@ class Login:
                 
                 self.link_global = Autentica.procuraissn(self.revista_global,end_dspace)
                 g_link = Autentica.procuraissn(self.revista_global,end_dspace)
-                print("\nlink = "+g_link)
+                #print("\nlink = "+g_link)
                 (cod, token) = Autentica.autenticar(self.user_global,self.senha_global,end_dspace)
                 self.token_global = token 
                 g_token = token
-                print(g_token)
+                #print(g_token)
                 
                 #dados_login = Autentica.inf_login()
                 
@@ -277,7 +277,7 @@ class Login:
         
         global g_link
 
-        print("\n\n Revista = "+g_link)
+        #print("\n\n Revista = "+g_link)
         retorno = g_link
         
         return retorno
