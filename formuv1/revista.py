@@ -11,6 +11,7 @@ from .autenticacao import Logar
 from .dados import Dados
 from .forms import ContactForm
 from .enviodeemail import EnviodoEmail
+import os
 
 g_link=""
 g_token=""
